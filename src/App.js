@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React , {useState , useEffect , useReducer} from 'react';
 import './App.css';
+import FormGiver from './component/FormBox/FormGiver';
+import WrapperGiver from './component/WrapperBox/WrapperGiver';
+
 
 function App() {
+
+  async function fetcher(newMovie) {
+    console.log(newMovie);
+    await fetch("https://fir-http-request-46853-default-rtdb.firebaseio.com/newMovies.json" , {
+      method : "POST",
+      body : JSON.stringify(newMovie),
+      headers : {'Content-Type' : 'application/json'}
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  function addTheData(newMovie) {
+    fetcher(newMovie);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    <WrapperGiver className = "mainContainer">
+
+          <FormGiver onformSubmit = {addTheData}/>
+    
+    
+    </WrapperGiver>
+
+  )
+
 }
 
 export default App;
+
+
