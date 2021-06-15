@@ -22,7 +22,7 @@ function FormGiver(props) {
         <WrapperGiver className = "formContainerBox">
             <form action="#" className = "mainForm" onSubmit = {formSubmitHandle}>
                 <WrapperGiver className = "forMovieName">
-                    <label htmlFor="forMovie_Id">Movie Name</label><br></br>
+                    <label htmlFor="forMovie_Id">_Movie Name_</label><br></br>
                     <input type="text" name="movie_name" id="forMovie_Id" ref = {movie_name}/>
                 </WrapperGiver>
                 <hr></hr>
